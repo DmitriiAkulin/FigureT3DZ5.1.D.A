@@ -4,42 +4,40 @@
 #include <windows.h>
 
 
-
+//фигура
 class Figure {
           protected:
-             int _side_count;
-             std::string  name = "фигура:\t\t ";
+             int _side_count;//число сторон
+             std::string  name = "фигура:\t\t ";//bvz abuehs
 
-             Figure(int _side_count): _side_count(_side_count){}
+             Figure(int _side_count): _side_count(_side_count){}//конструктор с параметром
 
           public:
-            Figure():Figure(0){}
-            int get_sides_count(){return _side_count;}          
-            std::string get_name(){return name;}
+            Figure():Figure(0){}//конструктор
+            int get_sides_count(){return _side_count;}//метод для доступа к полю _side_count      
+            std::string get_name(){return name;}//метод для доступа к полю name
 };
-
+//треугольник
 class Triangle : public Figure {
          
-             Triangle(int _side_count) : Figure(3) { name = "треугольник:\t ";}
              
          public:
-             Triangle():Triangle(_side_count){}
-};
 
+              Triangle() : Figure(3) { name = "треугольник:\t "; }
+};             
+//четырехугольник
 class Quadrangle : public Figure {         
-             
-             Quadrangle(int _side_count) : Figure(4) {name = "четырехугольник: ";}
-              
+                                     
           public:
-             Quadrangle():Quadrangle(_side_count){}
-};
+            
+              Quadrangle() : Figure(4) { name = "четырехугольник: "; }
+};         
 
 int main()
 {
-    setlocale(LC_ALL, "rus");
-    //SetConsoleOutputCP(1251);
-    //SetConsoleCP(1251);
-
+    setlocale(LC_ALL, "rus"); 
+    
+    //создаем экземпляры класса, выводим данные
     std::cout << "Количество сторон:\n";
     Figure figure; std::cout << figure.get_name() << figure.get_sides_count() << std::endl;;
     Triangle triangle; std::cout << triangle.get_name() << triangle.get_sides_count() << std::endl;;
